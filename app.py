@@ -21,6 +21,7 @@ class App:
 
     def __init__(self, model):
         self.model = model
+        self.default_character = "有華 美須斗"
 
         if "character_logs" not in st.session_state:
             html_file_paths = glob.glob("data/logs/*")
@@ -81,12 +82,18 @@ class App:
         st.image("data/logo/logo.png", width=800)
 
         character_logs = st.session_state["character_logs"]
-
+        character_list = list(character_logs.keys())
         with st.sidebar:
+
+            if self.default_character in character_list:
+                default_index = character_list.index(self.default_character)
+            else:
+                default_index = 0
+
             self.character_name = st.selectbox(
                 label="Character",
-                options=list(character_logs.keys()),
-                index=5,
+                options=character_list,
+                index=default_index,
             )
 
             self.character_features = extract_character_features(
