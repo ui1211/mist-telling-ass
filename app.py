@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 from src.log_parser import character_logs_from_files, extract_character_features
 
-GOOGLE_API_KEY = "AIzaSyBNt1EhID_8b4WJiodrk2jrmd17G2q81U8"
+GOOGLE_API_KEY = st.secrets["GOOGLE_API_KEY"]
 genai.configure(api_key=GOOGLE_API_KEY)
 model = genai.GenerativeModel("gemini-1.5-flash")
 
