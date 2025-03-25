@@ -124,6 +124,7 @@ class App:
                 self.user_name,
                 self.user_input,
                 chat_history=st.session_state["chat_history"],
+                debug=True,
             )
 
             # チャット履歴に追加
